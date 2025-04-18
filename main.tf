@@ -34,8 +34,9 @@ data "tfe_outputs" "foo" {
   workspace = "outputs"
 }
 
-
-output "consume_value" {
-  value = data.tfe_outputs.foo.values
-  sensitive = true
+resource "tfe_workspace" "test" {
+  name         = data.tfe_outputs.foo.values
+  organization = "georgi-berchev"
 }
+
+
