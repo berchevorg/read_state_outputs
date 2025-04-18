@@ -1,5 +1,5 @@
 resource "random_pet" "name" {
- length    = "3"
+ length    = "1"
  separator = "-"
 }
 
@@ -24,7 +24,8 @@ resource "random_pet" "name" {
 terraform {
   required_providers {
     tfe = {
-      version = "= 0.64.0"
+      version = "= 0.65.0"
+      #version = "= 0.64.0"
     }
   }
 }
