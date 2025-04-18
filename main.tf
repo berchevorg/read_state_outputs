@@ -34,13 +34,13 @@ data "tfe_outputs" "foo" {
   workspace = "outputs"
 }
 
-resource "tfe_workspace" "test" {
-  name         = "workspace"
-  organization = "georgi-berchev"
 
-  tags         = {
-      environment = "prod-${data.tfe_outputs.foo.values}
-  }
-}
+ resource null_resource echo_dummy {
+   provisioner local-exec {
+     command = "echo ${data.tfe_outputs.foo.values}"
+   }
 
-
+   triggers = {
+     hack = "${timestamp()}"
+   }
+ }
