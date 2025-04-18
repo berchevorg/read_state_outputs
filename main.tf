@@ -35,11 +35,6 @@ data "tfe_outputs" "foo" {
 }
 
 
-resource "random_id" "vpc_id" {
-  keepers = {
-    # Generate a new ID any time the value of 'bar' in workspace 'my-org/my-workspace' changes.
-    bar = data.tfe_outputs.foo.values
-  }
-
-  byte_length = 8
+output "consume_value" {
+  value = data.tfe_outputs.foo.values
 }
