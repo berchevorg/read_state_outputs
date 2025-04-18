@@ -35,8 +35,12 @@ data "tfe_outputs" "foo" {
 }
 
 resource "tfe_workspace" "test" {
-  name         = data.tfe_outputs.foo.values
+  name         = "workspace"
   organization = "georgi-berchev"
+
+  tags         = {
+      environment = "prod-${data.tfe_outputs.foo.values}
+  }
 }
 
 
