@@ -34,13 +34,18 @@ data "tfe_outputs" "foo" {
   workspace = "outputs"
 }
 
+output "consume_sensitive_value" {
+  value = data.tfe_outputs.foo.values
+  sensitive=true
+}
 
- resource null_resource echo_dummy {
-   provisioner local-exec {
-     command = "echo ${data.tfe_outputs.foo.values}"
-   }
 
-   triggers = {
-     hack = "${timestamp()}"
-   }
- }
+# resource null_resource echo_dummy {
+ #  provisioner local-exec {
+  #   command = "echo ${data.tfe_outputs.foo.values}"
+ #  }
+
+ #  triggers = {
+ #    hack = "${timestamp()}"
+ #  }
+# }
