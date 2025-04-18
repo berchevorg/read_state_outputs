@@ -36,7 +36,7 @@ data "tfe_outputs" "foo" {
 
 output "consume_sensitive_value" {
   value = data.tfe_outputs.foo.values
-  #sensitive=true
+  sensitive=true
 }
 
 
